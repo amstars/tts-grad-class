@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :events
+
+  resources :posts
+
   resources :startup_resources
 
   root to: 'welcome#index'
