@@ -4,7 +4,7 @@ describe "Logging in", :type => :feature do
   
   let(:user){ create(:user) }
 
-  it "signs me in" do
+  it "signs me in" do focused: true
     visit new_user_session_path
     within("#new_user") do
       fill_in 'Email', :with => user.email
