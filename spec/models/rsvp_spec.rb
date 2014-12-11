@@ -12,5 +12,5 @@ RSpec.describe Rsvp, :type => :model do
  	end
  	it "should require the event to be in the future" do
  		e = create(:event, starts_at: 2.weeks.ago)
- 		expect( build(:rsvp, event: e))
+ 		expect( build(:rsvp, event: e).)
 end

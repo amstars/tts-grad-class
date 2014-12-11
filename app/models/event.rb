@@ -11,5 +11,4 @@ class Event < ActiveRecord::Base
 		start_date < Time.now
 	end
 
-	# def do_something!
 end

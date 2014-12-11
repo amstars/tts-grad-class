@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141203002123) do
+ActiveRecord::Schema.define(version: 20141204235318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,14 @@ ActiveRecord::Schema.define(version: 20141203002123) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
+
+  create_table "rsvps", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.integer  "guest_count", default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "startup_resources", force: true do |t|
     t.integer  "user_id"
@@ -75,6 +83,9 @@ ActiveRecord::Schema.define(version: 20141203002123) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
+
+  add_foreign_key "rsvps", "events", name: "rsvps_event_id_fk"
+  add_foreign_key "rsvps", "users", name: "rsvps_user_id_fk"
 
   add_foreign_key "startup_resources", "users", name: "startup_resources_user_id_fk"
 

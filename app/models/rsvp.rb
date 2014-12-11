@@ -4,7 +4,7 @@ class Rsvp < ActiveRecord::Base
 	validates :user, presence: true
 	validates :event, presence: true
 
-	validates :only_future_events
+	validate :only_future_events
 
 	validates :guest_count, inclusion: { in: 0..9 }
 
